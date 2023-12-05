@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
 {
+
     public enum PlayerStates
     {
         IdleState,
@@ -30,6 +31,11 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
         else if (Input.GetKeyDown(KeyCode.S))
         {
             nextState = PlayerStates.IdleState;
+        }
+
+        if (!currentState.StateKey.Equals(nextState))
+        {
+            ChangeState(nextState);
         }
     }
 }
