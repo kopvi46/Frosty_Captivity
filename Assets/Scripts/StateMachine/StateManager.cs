@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking.PlayerConnection;
-using UnityEngine.XR;
 
 public class StateManager<EStates> : MonoBehaviour
 {
