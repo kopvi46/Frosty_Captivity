@@ -23,13 +23,16 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         OnMove();
+        OnLook();
     }
 
     private void OnMove()
     {
+        float moveHorizontal = _initializer.move.x;
+        float moveVertical = _initializer.move.y;
 
-        Vector3 movement = new Vector3(_initializer.move.x, 0, _initializer.move.y) * _speed * Time.deltaTime;
-        _rigidbody.MovePosition(transform.position + transform.TransformDirection(movement));
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * _speed * Time.deltaTime;
+        _rigidbody.AddForce(transform.TransformDirection(movement), ForceMode.VelocityChange);
     }
 
     private void OnLook()

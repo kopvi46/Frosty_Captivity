@@ -676,12 +676,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 1, z: -5}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 0.5
+  m_YawDamping: 1.5
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1052766140
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.1
+  m_SoftZoneWidth: 0.4
   m_SoftZoneHeight: 0.1
   m_BiasX: 0
   m_BiasY: 0
@@ -1058,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba6ea450fde35d41a1b079750ddabe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 2078032384}
 --- !u!114 &2078032382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,9 +1115,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078032376}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 100
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1146,7 +1147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initializer: {fileID: 2078032382}
-  _speed: 5
+  _speed: 20
   _mouseSens: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
