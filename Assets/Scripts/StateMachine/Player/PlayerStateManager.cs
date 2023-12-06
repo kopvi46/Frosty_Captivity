@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
 {
-
+    public Rigidbody _rigidbody;
     public enum PlayerStates
     {
         IdleState,
@@ -24,11 +24,13 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
     {
         PlayerStates nextState = currentState.StateKey;
         
-        if (Input.GetKeyDown(KeyCode.W))
+        bool isMoving = _rigidbody.velocity.sqrMagnitude != 0;
+
+        if (isMoving)
         {
             nextState = PlayerStates.WalkState;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else
         {
             nextState = PlayerStates.IdleState;
         }
