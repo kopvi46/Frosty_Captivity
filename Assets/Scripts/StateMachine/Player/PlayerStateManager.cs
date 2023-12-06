@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
 {
-
     public enum PlayerStates
     {
         IdleState,
