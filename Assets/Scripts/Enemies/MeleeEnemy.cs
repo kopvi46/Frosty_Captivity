@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
-    public Transform _target;
-    public float _speed;
-    public float _distance;
+    public Transform target;
+    public float speed;
+    public float distance;
 
     void FixedUpdate()
     {
-        if ( _target != null )
+        if ( target != null )
         {
-            _distance = Vector3.Distance(transform.position, _target.position);
+            distance = Vector3.Distance(transform.position, target.position);
         }
     }
 }
