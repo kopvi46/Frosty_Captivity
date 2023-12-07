@@ -8,16 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _mouseSens;
 
     private Rigidbody _rigidbody;
-    private Camera _camera;
 
     private float _yRotation = 0;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _camera = Camera.main;
     }
-
+                 
     void FixedUpdate()
     {
         OnMove();
@@ -32,11 +30,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * _speed * Time.deltaTime;
         _rigidbody.AddForce(transform.TransformDirection(movement), ForceMode.VelocityChange);
     }
-
-    private void OnLook()
+private void OnLook()
     {
-        _yRotation += _initializer.look.x;
-
-        transform.rotation = Quaternion.Euler(0, _yRotation, 0).normalized;
+        if (_initializer.look.x != 0)
+        {
+            _yRotation += _initializer.look.x;
+            transform.rotation = Quaternion.Euler(0, _yRotation, 0).normalized;
+        }
     }
+    
 }

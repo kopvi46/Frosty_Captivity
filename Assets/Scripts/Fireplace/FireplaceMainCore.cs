@@ -19,7 +19,7 @@ public class FireplaceMainCore : MonoBehaviour
         }
         if (fireplaceHealth > 0)
         {
-            if( fireplaceBurnCoroutine != null )
+            if( fireplaceBurnCoroutine == null )
             {
                 fireplaceBurnCoroutine = StartCoroutine(ApplyFireplaceBurn());
             }
@@ -32,7 +32,8 @@ public class FireplaceMainCore : MonoBehaviour
                 fireplaceBurnCoroutine = null;
             }
         }
-        
+
+        Debug.Log("Fireplace health:" + fireplaceHealth);
     }
 
     private IEnumerator ApplyFireplaceBurn()

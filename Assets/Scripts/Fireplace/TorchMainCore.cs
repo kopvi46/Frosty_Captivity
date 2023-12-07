@@ -13,7 +13,6 @@ public class TorchMainCore : MonoBehaviour
     private void Awake()
     {
         _torchObject = GameObject.Find("Torch");
-        torchBurnCoroutine = StartCoroutine(ApplyTorchBurn());
     }
 
     private void FixedUpdate()
@@ -25,7 +24,7 @@ public class TorchMainCore : MonoBehaviour
                 _torchObject.SetActive(true);
             }
 
-            if (torchBurnCoroutine != null)
+            if (torchBurnCoroutine == null)
             {
                 torchBurnCoroutine = StartCoroutine(ApplyTorchBurn());
             }
@@ -44,15 +43,15 @@ public class TorchMainCore : MonoBehaviour
             }
         }
 
-        Debug.Log(torchHealth);
+        Debug.Log("Torch health:" + torchHealth);
     }
 
     private IEnumerator ApplyTorchBurn()
     {
         while (torchHealth > 0)
         {
-            torchHealth -= torchBurn;
             yield return new WaitForSeconds(torchBurnInterval);
+            torchHealth -= torchBurn;
         }
     }
 }

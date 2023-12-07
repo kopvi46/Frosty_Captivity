@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchHealth: 10
   torchBurn: 1
-  torchBurnInterval: 3
+  torchBurnInterval: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   freezeDamage: 10
-  freezeDamageInterval: 5
+  freezeDamageInterval: 3
   _fireplaceMainCore: {fileID: 827108735}
   _torchMainCore: {fileID: 698566872}
 --- !u!1660057539 &9223372036854775807

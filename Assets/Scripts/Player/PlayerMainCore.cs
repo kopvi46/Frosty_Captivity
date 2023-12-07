@@ -15,9 +15,9 @@ public class PlayerMainCore : MonoBehaviour
     {
         if ( _fireplaceMainCore != null)
         {
-            if (_fireplaceMainCore.distance > 20 && _torchMainCore.torchHealth > 0)
+            if (_fireplaceMainCore.distance > 20 && _torchMainCore.torchHealth <= 0)
             {
-                if (freezeDamageCoroutine != null)
+                if (freezeDamageCoroutine == null)
                 {
                     freezeDamageCoroutine = StartCoroutine(ApplyFreezeDamage());
                 }
@@ -31,6 +31,8 @@ public class PlayerMainCore : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log("Player health:" + playerHealth);
     }
 
     private IEnumerator ApplyFreezeDamage()
