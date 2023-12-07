@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
-
-        _initializer.shootEvent.AddListener(OnShoot);
     }
 
     void FixedUpdate()
@@ -40,10 +38,5 @@ public class PlayerMovement : MonoBehaviour
         _yRotation += _initializer.look.x;
 
         transform.rotation = Quaternion.Euler(0, _yRotation, 0).normalized;
-    }
-
-    private void OnShoot()
-    {
-        Debug.Log("Fire");
     }
 }
