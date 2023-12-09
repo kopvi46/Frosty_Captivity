@@ -4,12 +4,21 @@ using UnityEngine;
 public class FireplaceMainCore : MonoBehaviour
 {
     public Transform player;
+    public float fireplaceMaxHealth;
     public float fireplaceHealth;
     public float fireplaceBurn;
     public float fireplaceBurnInterval;
     public float distance;
 
+    [SerializeField] private Bars _bars;
+
     private Coroutine fireplaceBurnCoroutine;
+
+    private void Start()
+    {
+        fireplaceHealth = fireplaceMaxHealth;
+        _bars.SetFireplaceHealth(fireplaceMaxHealth);
+    }
 
     private void FixedUpdate()
     {
@@ -32,15 +41,15 @@ public class FireplaceMainCore : MonoBehaviour
                 fireplaceBurnCoroutine = null;
             }
         }
-
-        Debug.Log("Fireplace health:" + fireplaceHealth);
     }
 
     private IEnumerator ApplyFireplaceBurn()
     {
         while (fireplaceHealth > 0)
         {
+            //Debug.Log("Fireplace health:" + fireplaceHealth);
             fireplaceHealth -= fireplaceBurn;
+            _bars.SetFireplaceHealth(fireplaceHealth);
             yield return new WaitForSeconds(fireplaceBurnInterval);
         }
     }

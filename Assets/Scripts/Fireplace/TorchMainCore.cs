@@ -3,16 +3,24 @@ using UnityEngine;
 
 public class TorchMainCore : MonoBehaviour
 {
+    public float torchMaxHealth;
     public float torchHealth;
     public float torchBurn;
     public float torchBurnInterval;
 
     private Coroutine torchBurnCoroutine;
     private GameObject _torchObject;
+    [SerializeField] private Bars _bars;
 
     private void Awake()
     {
         _torchObject = GameObject.Find("Torch");
+    }
+
+    private void Start()
+    {
+        torchHealth = torchMaxHealth;
+        _bars.SetMaxTorchHealth(torchMaxHealth);
     }
 
     private void FixedUpdate()
@@ -42,16 +50,16 @@ public class TorchMainCore : MonoBehaviour
                 torchBurnCoroutine = null;
             }
         }
-
-        Debug.Log("Torch health:" + torchHealth);
     }
 
     private IEnumerator ApplyTorchBurn()
     {
         while (torchHealth > 0)
         {
-            yield return new WaitForSeconds(torchBurnInterval);
+            //Debug.Log("Torch health:" + torchHealth);
             torchHealth -= torchBurn;
+            _bars.SetTorchHealth(torchHealth);
+            yield return new WaitForSeconds(torchBurnInterval);
         }
     }
 }

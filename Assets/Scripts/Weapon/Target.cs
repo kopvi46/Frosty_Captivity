@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health;
+    public MeleeEnemy _meleeEnemy;
     public float damageForcePush;
+
+    [SerializeField] private Bars _bars;
+
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        if (health <= 0)
+        _meleeEnemy.meleeEnemyHealth -= amount;
+        _bars.SetMeleeEnemyHealth(_meleeEnemy.meleeEnemyHealth);
+        if (_meleeEnemy.meleeEnemyHealth <= 0)
         {
             Die();
         }

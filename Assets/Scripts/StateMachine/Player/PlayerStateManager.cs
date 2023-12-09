@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
 {
-    public Rigidbody _rigidbody;
+    public Initializer _initializer;
+
     public enum PlayerStates
     {
         IdleState,
@@ -20,8 +21,8 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
     void Update()
     {
         PlayerStates nextState = currentState.StateKey;
-        
-        bool isMoving = _rigidbody.velocity.sqrMagnitude != 0;
+
+        bool isMoving = (_initializer.move.x != 0 || _initializer.move.y != 0);
 
         if (isMoving)
         {
