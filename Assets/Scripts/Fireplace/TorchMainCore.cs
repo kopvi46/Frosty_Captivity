@@ -1,0 +1,65 @@
+using System.Collections;
+using UnityEngine;
+
+public class TorchMainCore : MonoBehaviour
+{
+    public float torchMaxHealth;
+    public float torchHealth;
+    public float torchBurn;
+    public float torchBurnInterval;
+
+    private Coroutine torchBurnCoroutine;
+    private GameObject _torchObject;
+    [SerializeField] private Bars _bars;
+
+    private void Awake()
+    {
+        _torchObject = GameObject.Find("Torch");
+    }
+
+    private void Start()
+    {
+        torchHealth = torchMaxHealth;
+        _bars.SetMaxTorchHealth(torchMaxHealth);
+    }
+
+    private void FixedUpdate()
+    {
+        if (torchHealth > 0)
+        {
+            if (_torchObject != null)
+            {
+                _torchObject.SetActive(true);
+            }
+
+            if (torchBurnCoroutine == null)
+            {
+                torchBurnCoroutine = StartCoroutine(ApplyTorchBurn());
+            }
+        }
+        else
+        {
+            if (_torchObject != null)
+            {
+                _torchObject.SetActive(false);
+            }
+
+            if (torchBurnCoroutine != null)
+            {
+                StopCoroutine(torchBurnCoroutine);
+                torchBurnCoroutine = null;
+            }
+        }
+    }
+
+    private IEnumerator ApplyTorchBurn()
+    {
+        while (torchHealth > 0)
+        {
+            //Debug.Log("Torch health:" + torchHealth);
+            torchHealth -= torchBurn;
+            _bars.SetTorchHealth(torchHealth);
+            yield return new WaitForSeconds(torchBurnInterval);
+        }
+    }
+}

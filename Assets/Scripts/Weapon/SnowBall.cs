@@ -2,25 +2,38 @@ using UnityEngine;
 
 public class SnowBall : MonoBehaviour
 {
-    public GameObject snowBallPrefab;
     public float snowBallSpeed;
     public float life;
     public float damage;
 
-    private void Awake()
+    private SnowBallShooter shooter;
+    public void SetShooter(SnowBallShooter shooter)
     {
-        Destroy(gameObject, life);
+        this.shooter = shooter;
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Target target = collision.gameObject.GetComponent<Target>();
 
         if (target != null)
         {
             target.TakeDamage(damage);
-            Destroy(gameObject);
-            Debug.Log(target.name);
+            shooter.ReturnToPool(this);
+            Debug.Log(collision.gameObject.name);
+        }
+    }
+
+    private void OnEnable()
+    {
+        Invoke(nameof(CheckCollision), 3f);
+    }
+
+    private void CheckCollision()
+    {
+        if (shooter != null)
+        {
+            shooter.ReturnToPool(this);
         }
     }
 }
