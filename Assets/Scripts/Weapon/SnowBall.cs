@@ -20,7 +20,6 @@ public class SnowBall : MonoBehaviour
         {
             baseEnemy.TakeDamage(damage);
             shooter.ReturnToPool(this);
-            Debug.Log(collision.gameObject.name);
         }
     }
 
