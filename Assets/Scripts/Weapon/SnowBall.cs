@@ -14,11 +14,11 @@ public class SnowBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Target target = collision.gameObject.GetComponent<Target>();
+        BaseEnemy baseEnemy = collision.gameObject.GetComponent<BaseEnemy>();
 
-        if (target != null)
+        if (baseEnemy != null)
         {
-            target.TakeDamage(damage);
+            baseEnemy.TakeDamage(damage);
             shooter.ReturnToPool(this);
             Debug.Log(collision.gameObject.name);
         }

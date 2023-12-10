@@ -7,14 +7,11 @@ public abstract class BaseEnemy : MonoBehaviour
     public Transform target;
     public float speed;
     public float distance;
-    public float enemyMaxHealth;
-    public float enemyHealth;
+    public float maxHealth;
+    public float health;
 
-    [SerializeField] private Bars _bars;
-    private void Start()
-    {
-        enemyHealth = enemyMaxHealth;
-    }
+    [SerializeField] protected Bars _bars;
+
     void FixedUpdate()
     {
         if (target != null)

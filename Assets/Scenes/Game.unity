@@ -627,7 +627,6 @@ GameObject:
   - component: {fileID: 653082286}
   - component: {fileID: 653082285}
   - component: {fileID: 653082284}
-  - component: {fileID: 653082287}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -750,8 +749,8 @@ MonoBehaviour:
   target: {fileID: 2078032380}
   speed: 0.2
   distance: 0
-  meleeEnemyMaxHealth: 50
-  meleeEnemyHealth: 0
+  maxHealth: 50
+  health: 0
   _bars: {fileID: 1471022243}
 --- !u!54 &653082286
 Rigidbody:
@@ -780,21 +779,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &653082287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653082279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7151a6e5e0dd8674d94022758dcddaa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meleeEnemy: {fileID: 653082285}
-  damageForcePush: 30
-  _bars: {fileID: 1471022243}
 --- !u!1 &698566866
 GameObject:
   m_ObjectHideFlags: 0

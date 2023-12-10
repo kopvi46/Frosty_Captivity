@@ -1,26 +1,20 @@
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemy : BaseEnemy
 {
-    public Transform target;
-    public float speed;
-    public float distance;
-    public float meleeEnemyMaxHealth;
-    public float meleeEnemyHealth;
-
-    [SerializeField] private Bars _bars;
-
-
     private void Start()
     {
-        meleeEnemyHealth = meleeEnemyMaxHealth;
-        _bars.SetMaxMeleeEnemyHealth(meleeEnemyMaxHealth);
+        health = maxHealth;
+        _bars.SetMaxMeleeEnemyHealth(maxHealth);
     }
-    void FixedUpdate()
+
+    public override void TakeDamage(float amount)
     {
-        if ( target != null )
+        health -= amount;
+        _bars.SetMeleeEnemyHealth(health);
+        if (health <= 0)
         {
-            distance = Vector3.Distance(transform.position, target.position);
+            Die();
         }
     }
 }
