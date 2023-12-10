@@ -21,7 +21,6 @@ public class SnowBallShooter : MonoBehaviour
 
     private void OnShoot()
     {
-
         SnowBall snowBall = _snowBallPool.Get();
 
         snowBall.transform.position = snowBallSpawnPoint.position;
