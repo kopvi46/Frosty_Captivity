@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,18 +8,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
-    private float _yRotation = 0;
-
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
-                 
+
     void FixedUpdate()
     {
         OnMove();
-        OnLook();
+        LookAtCursor();
     }
 
     private void OnMove()
@@ -29,15 +25,24 @@ public class PlayerMovement : MonoBehaviour
         float moveVertical = _initializer.move.y;
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * _speed * Time.deltaTime;
-        _rigidbody.AddForce(transform.TransformDirection(movement), ForceMode.VelocityChange);
+        transform.position += movement;
     }
-private void OnLook()
+
+    private void LookAtCursor()
     {
-        if (_initializer.look.x != 0)
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(cameraRay, out hit))
         {
-            _yRotation += _initializer.look.x;
-            transform.rotation = Quaternion.Euler(0, _yRotation, 0).normalized;
+            Vector3 cursorDirection = hit.point - transform.position;
+            cursorDirection.y = 0f;
+
+            if (cursorDirection.magnitude > 0.1f)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(cursorDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, _mouseSens * Time.deltaTime);
+            }
         }
     }
-    
 }
