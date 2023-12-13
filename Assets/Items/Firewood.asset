@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2ac3c8923cd57b4d862b53b35dc07ab, type: 3}
-  m_Name: TestItem
+  m_Name: Firewood
   m_EditorClassIdentifier: 
-  name: Test Item
-  icon: {fileID: 0}
+  name: Firewood
+  icon: {fileID: 21300000, guid: ac4247a12c50e4a48b2082aaee5c3257, type: 3}
   isDefaultItem: 0
