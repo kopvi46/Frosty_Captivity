@@ -3,6 +3,19 @@ using UnityEngine;
 
 public class FireplaceMainCore : MonoBehaviour
 {
+    #region Singleton 
+    public static FireplaceMainCore instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("More than one instance of FireplaceMainCore found!");
+        }
+        instance = this;
+    }
+    #endregion
+
     public Transform player;
     public float fireplaceMaxHealth;
     public float fireplaceHealth;

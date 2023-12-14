@@ -12,6 +12,7 @@ public class PlayerMainCore : MonoBehaviour
     [SerializeField] private Bars _bars;
 
     private Coroutine freezeDamageCoroutine;
+    private Coroutine warmHealCoroutine;
 
     private void Start()
     {
@@ -37,6 +38,21 @@ public class PlayerMainCore : MonoBehaviour
                     freezeDamageCoroutine = null;
                 }
             }
+
+            if (_fireplaceMainCore.distance < 20)
+            {
+                if (warmHealCoroutine == null)
+                {
+                    warmHealCoroutine = StartCoroutine(ApplyWarmHeal());
+                }
+            } else
+            {
+                if (warmHealCoroutine != null)
+                {
+                    StopCoroutine(warmHealCoroutine);
+                    warmHealCoroutine = null;
+                }
+            }
         }
     }
 
@@ -46,6 +62,15 @@ public class PlayerMainCore : MonoBehaviour
         {
             //Debug.Log("Player health:" + playerHealth);
             playerHealth -= freezeDamage;
+            _bars.SetPlayerHealth(playerHealth);
+            yield return new WaitForSeconds(freezeDamageInterval);
+        }
+    }
+    private IEnumerator ApplyWarmHeal()
+    {
+        while (playerHealth < 100)
+        {
+            playerHealth += freezeDamage;
             _bars.SetPlayerHealth(playerHealth);
             yield return new WaitForSeconds(freezeDamageInterval);
         }
