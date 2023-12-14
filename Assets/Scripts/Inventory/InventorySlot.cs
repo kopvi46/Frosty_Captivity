@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,21 @@ public class InventorySlot : MonoBehaviour
 
     public void OnRemoveButton()
     {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            Transform playerTransform = playerObject.transform;
+
+            Vector3 spawnOffset = Vector3.forward * 1f;
+            Vector3 spawnPosition = playerTransform.position + spawnOffset;
+
+            DropItem(item.itemPrefab, spawnPosition);
+        }
+        else
+        {
+            Debug.LogError("Player GameObject not found or tagged incorrectly!");
+        }
+
         Inventory.instance.Remove(item);
     }
 
@@ -36,6 +52,14 @@ public class InventorySlot : MonoBehaviour
         if (item != null)
         {
             item.Use();
+        }
+    }
+
+    public void DropItem(GameObject prefab, Vector3 spawnPosition)
+    {
+        if (item != null)
+        {
+            GameObject newIt = Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
         }
     }
 }

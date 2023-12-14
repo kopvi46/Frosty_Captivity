@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Gold
   icon: {fileID: 21300000, guid: e28322f00a609f94ead2ea3f06895feb, type: 3}
   isDefaultItem: 0
+  itemPrefab: {fileID: 2134041217246313233, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
