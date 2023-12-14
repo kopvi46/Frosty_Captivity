@@ -19,19 +19,14 @@ public class TorchMainCore : MonoBehaviour
 
     private void Start()
     {
-        torchHealth = torchMaxHealth;
+        //torchHealth = torchMaxHealth;
         _bars.SetMaxTorchHealth(torchMaxHealth);
     }
 
     private void FixedUpdate()
     {
-        if (torchHealth > 0)
+        if (torchHealth > 0 && _torchObject.activeSelf)
         {
-            if (_torchObject != null)
-            {
-                _torchObject.SetActive(true);
-            }
-
             if (torchBurnCoroutine == null)
             {
                 torchBurnCoroutine = StartCoroutine(ApplyTorchBurn());

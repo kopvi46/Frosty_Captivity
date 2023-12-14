@@ -1259,11 +1259,11 @@ GameObject:
   - component: {fileID: 698566872}
   m_Layer: 0
   m_Name: Torch
-  m_TagString: Untagged
+  m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698566867
 Transform:
   m_ObjectHideFlags: 0
@@ -1474,6 +1474,7 @@ GameObject:
   - component: {fileID: 827108732}
   - component: {fileID: 827108731}
   - component: {fileID: 827108735}
+  - component: {fileID: 827108736}
   m_Layer: 0
   m_Name: Fireplace
   m_TagString: Untagged
@@ -1588,6 +1589,23 @@ MonoBehaviour:
   fireplaceBurnInterval: 5
   distance: 0
   _bars: {fileID: 1471022243}
+--- !u!114 &827108736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827108730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51ad8c1628e1d746ad0474ef4e04d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  interactionTransform: {fileID: 827108734}
+  torchObject: {fileID: 698566866}
+  torchMainCore: {fileID: 698566872}
+  fireplaceMainCore: {fileID: 827108735}
 --- !u!1 &896085773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2040,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 10
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2844,9 +2862,10 @@ GameObject:
   - component: {fileID: 1413134565}
   - component: {fileID: 1413134564}
   - component: {fileID: 1413134563}
+  - component: {fileID: 1413134567}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2939,6 +2958,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1413134567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413134562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a009edf67b446274f92404c4347a577e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  interactionTransform: {fileID: 1413134566}
+  hitToGather: 3
+  itemPrefab: {fileID: 2134041217246313233, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
 --- !u!1 &1471022238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,67 +3854,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f97f0eeb2dadcf4896efb80dd9b53dc, type: 3}
---- !u!1001 &8269882750940360016
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2134041217246313233, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_Name
-      value: Firewood
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134041217246313233, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_TagString
-      value: Firewood
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251942211137713773, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d9178837761b2be4cbddd3887bc47b78, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3895,4 +3869,3 @@ SceneRoots:
   - {fileID: 827108734}
   - {fileID: 653082283}
   - {fileID: 1413134566}
-  - {fileID: 8269882750940360016}
