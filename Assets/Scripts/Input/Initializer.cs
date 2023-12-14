@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 public class Initializer : MonoBehaviour
 {
     public UnityEvent shootEvent = new();
+    public UnityEvent actionEvent = new();
     public Vector2 move;
     public Vector2 look;
     public bool shoot;
+    public bool action;
 
     public void OnMove(InputValue value)
     {
@@ -21,5 +23,10 @@ public class Initializer : MonoBehaviour
     {
         shoot = value.isPressed;
         shootEvent?.Invoke();
+    }
+    public void OnAction(InputValue value)
+    {
+        action = value.isPressed;
+        actionEvent?.Invoke();
     }
 }
