@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ChaseState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
+public class RangeChaseState : BaseState<RangeEnemyStateManager.RangeEnemyStates>
 {
-    public ChaseState(MeleeEnemyStateManager.MeleeEnemyStates key) : base(key) { }
+    public RangeChaseState(RangeEnemyStateManager.RangeEnemyStates key) : base(key) { }
     public override void Enter()
     {
         Debug.Log("Entered Chase State");

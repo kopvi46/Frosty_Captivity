@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
+public class RangePatrolState : BaseState<RangeEnemyStateManager.RangeEnemyStates>
 {
-    public PatrolState(MeleeEnemyStateManager.MeleeEnemyStates key) : base(key) { }
+    public RangePatrolState(RangeEnemyStateManager.RangeEnemyStates key) : base(key) { }
     public override void Enter()
     {
         Debug.Log("Entered Patrol State");

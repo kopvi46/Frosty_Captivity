@@ -7,6 +7,7 @@ public class Bars : MonoBehaviour
     public Slider _fireplaceSlider;
     public Slider _torchSlider;
     public Slider _meleeEnemySlider;
+    public Slider _rangeEnemySlider;
 
     public void SetMaxPlayerHealth(float MaxHealth)
     {
@@ -50,5 +51,16 @@ public class Bars : MonoBehaviour
     public void SetMeleeEnemyHealth(float health)
     {
         _meleeEnemySlider.value = health;
+    }
+
+    public void SetMaxRangeEnemyHealth(float MaxHealth)
+    {
+        _rangeEnemySlider.maxValue = MaxHealth;
+        _rangeEnemySlider.value = MaxHealth;
+    }
+
+    public void SetRangeEnemyHealth(float health)
+    {
+        _rangeEnemySlider.value = health;
     }
 }

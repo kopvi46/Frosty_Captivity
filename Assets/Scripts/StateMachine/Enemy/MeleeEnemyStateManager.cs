@@ -6,17 +6,17 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
 
     public enum MeleeEnemyStates
     {
-        PatrolState,
-        ChaseState,
+        MeleePatrolState,
+        MeleeChaseState,
         MeleeAttackState
     }
     void Awake()
     {
-        States.Add(MeleeEnemyStates.PatrolState, new PatrolState(MeleeEnemyStates.PatrolState));
-        States.Add(MeleeEnemyStates.ChaseState, new ChaseState(MeleeEnemyStates.ChaseState));
+        States.Add(MeleeEnemyStates.MeleePatrolState, new MeleePatrolState(MeleeEnemyStates.MeleePatrolState));
+        States.Add(MeleeEnemyStates.MeleeChaseState, new MeleeChaseState(MeleeEnemyStates.MeleeChaseState));
         States.Add(MeleeEnemyStates.MeleeAttackState, new MeleeAttackState(MeleeEnemyStates.MeleeAttackState));
 
-        currentState = States[MeleeEnemyStates.PatrolState];
+        currentState = States[MeleeEnemyStates.MeleePatrolState];
     }
 
     void Update()
@@ -25,11 +25,11 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
 
         if (_meleeEnemy.distance > 20)
         {
-            nextState = MeleeEnemyStates.PatrolState;
+            nextState = MeleeEnemyStates.MeleePatrolState;
         } 
         else if (_meleeEnemy.distance < 20 && _meleeEnemy.distance > 5)
         {
-            nextState = MeleeEnemyStates.ChaseState;
+            nextState = MeleeEnemyStates.MeleeChaseState;
 
             if (_meleeEnemy != null && _meleeEnemy.target != null)
             {
