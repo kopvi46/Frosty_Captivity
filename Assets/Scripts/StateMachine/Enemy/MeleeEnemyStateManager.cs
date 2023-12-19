@@ -23,6 +23,8 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
     {
         MeleeEnemyStates nextState = currentState.StateKey;
 
+        UpdateCurrentState();
+
         if (_meleeEnemy.distance > 20)
         {
             nextState = MeleeEnemyStates.MeleePatrolState;
@@ -30,13 +32,6 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
         else if (_meleeEnemy.distance < 20 && _meleeEnemy.distance > 5)
         {
             nextState = MeleeEnemyStates.MeleeChaseState;
-
-            if (_meleeEnemy != null && _meleeEnemy.target != null)
-            {
-                Vector3 direction = _meleeEnemy.target.position - _meleeEnemy.transform.position;
-                direction.Normalize();
-                _meleeEnemy.transform.Translate(direction * _meleeEnemy.speed * Time.fixedDeltaTime);
-            }
         }
         else if (_meleeEnemy.distance < 5)
         {
@@ -46,6 +41,14 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
         if(!currentState.StateKey.Equals(nextState))
         {
             ChangeState(nextState);
+        }
+    }
+
+    void UpdateCurrentState()
+    {
+        if (currentState != null)
+        {
+            currentState.Update();
         }
     }
 }
