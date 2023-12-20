@@ -3,6 +3,19 @@ using UnityEngine.UI;
 
 public class Bars : MonoBehaviour
 {
+    #region Singleton 
+    public static Bars instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("More than one instance of FireplaceMainCore found!");
+        }
+        instance = this;
+    }
+    #endregion
+
     public Slider _playerSlider;
     public Slider _fireplaceSlider;
     public Slider _torchSlider;

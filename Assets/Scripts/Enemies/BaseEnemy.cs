@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
@@ -13,8 +11,28 @@ public abstract class BaseEnemy : MonoBehaviour
     public float health;
     public float heatDamage;
     public float heatDamageDelay;
+    public float changePatrolDirectionInterval;
+    public float maxPatrolDistance;
+    public float patrolSpeedMultiplier;
+    public float attackForce;
 
-    [SerializeField] protected Bars _bars;
+    //[SerializeField] public Bars _bars;
+
+    //private void Start()
+    //{
+    //    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+    //    GameObject fireplaceObject = GameObject.FindGameObjectWithTag("Fireplace");
+
+    //    if (playerObject != null)
+    //    {
+    //        playerTarget = playerObject.transform;
+    //    }
+
+    //    if (fireplaceObject != null)
+    //    {
+    //        fireplaceTarget = fireplaceObject.transform;
+    //    }
+    //}
 
     void FixedUpdate()
     {
@@ -27,6 +45,23 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             fireplaceDistance = Vector3.Distance(transform.position, fireplaceTarget.position);
         }
+
+        if (fireplaceDistance <= 10)
+        {
+            heatDamageDelay += Time.deltaTime;
+
+            if (heatDamageDelay >= 3)
+            {
+                health -= heatDamage;
+
+                heatDamageDelay = 0f;
+            }
+        }
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public abstract void TakeDamage(float damage);
@@ -34,5 +69,7 @@ public abstract class BaseEnemy : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
+
+        EnemiesSpawner.instance.SpawnEnemy();
     }
 }

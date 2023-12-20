@@ -9,47 +9,25 @@ public class MeleeEnemy : BaseEnemy
     {
         if (instance != null)
         {
-            Debug.Log("More than one instance of FireplaceMainCore found!");
+            Debug.Log("More than one instance of MeleeEnemy found!");
         }
         instance = this;
     }
     #endregion
 
-    public float changePatrolDirectionInterval;
-    public float maxPatrolDistance;
-    public float patrolSpeedMultiplier;
-    public float attackForce;
-
     private void Start()
     {
         health = maxHealth;
-        _bars.SetMaxMeleeEnemyHealth(maxHealth);
+        Bars.instance.SetMaxMeleeEnemyHealth(maxHealth);
     }
 
     private void Update()
     {
-        if (fireplaceDistance <= 10)
-        {
-            heatDamageDelay += Time.deltaTime;
-
-            if (heatDamageDelay >= 3)
-            {
-                health -= heatDamage;
-                _bars.SetMeleeEnemyHealth(health);
-
-                heatDamageDelay = 0f;
-            }
-        }
-
-        if (health <= 0)
-        {
-            Die();
-        }
+        Bars.instance.SetMeleeEnemyHealth(health);
     }
 
     public override void TakeDamage(float amount)
     {
         health -= amount;
-        _bars.SetMeleeEnemyHealth(health);
     }
 }
