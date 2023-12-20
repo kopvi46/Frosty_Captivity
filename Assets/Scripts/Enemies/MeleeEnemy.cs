@@ -18,6 +18,7 @@ public class MeleeEnemy : BaseEnemy
     public float changePatrolDirectionInterval;
     public float maxPatrolDistance;
     public float patrolSpeedMultiplier;
+    public float attackForce;
 
     private void Start()
     {
@@ -25,13 +26,30 @@ public class MeleeEnemy : BaseEnemy
         _bars.SetMaxMeleeEnemyHealth(maxHealth);
     }
 
-    public override void TakeDamage(float amount)
+    private void Update()
     {
-        health -= amount;
-        _bars.SetMeleeEnemyHealth(health);
+        if (fireplaceDistance <= 10)
+        {
+            heatDamageDelay += Time.deltaTime;
+
+            if (heatDamageDelay >= 3)
+            {
+                health -= heatDamage;
+                _bars.SetMeleeEnemyHealth(health);
+
+                heatDamageDelay = 0f;
+            }
+        }
+
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    public override void TakeDamage(float amount)
+    {
+        health -= amount;
+        _bars.SetMeleeEnemyHealth(health);
     }
 }

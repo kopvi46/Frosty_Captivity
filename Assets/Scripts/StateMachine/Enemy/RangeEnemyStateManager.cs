@@ -23,22 +23,22 @@ public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeE
     {
         RangeEnemyStates nextState = currentState.StateKey;
 
-        if (_rangeEnemy.distance > 25)
+        if (_rangeEnemy.playerDistance > 25)
         {
             nextState = RangeEnemyStates.RangePatrolState;
         }
-        else if (_rangeEnemy.distance < 25 && _rangeEnemy.distance > 10)
+        else if (_rangeEnemy.playerDistance < 25 && _rangeEnemy.playerDistance > 10)
         {
             nextState = RangeEnemyStates.RangeChaseState;
 
-            if (_rangeEnemy != null && _rangeEnemy.target != null)
+            if (_rangeEnemy != null && _rangeEnemy.playerTarget != null)
             {
-                Vector3 direction = _rangeEnemy.target.position - _rangeEnemy.transform.position;
+                Vector3 direction = _rangeEnemy.playerTarget.position - _rangeEnemy.transform.position;
                 direction.Normalize();
                 _rangeEnemy.transform.Translate(direction * _rangeEnemy.speed * Time.fixedDeltaTime);
             }
         }
-        else if (_rangeEnemy.distance < 10)
+        else if (_rangeEnemy.playerDistance < 10)
         {
             nextState = RangeEnemyStates.RangeAttackState;
         }

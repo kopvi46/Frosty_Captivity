@@ -1375,15 +1375,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c837c555a2ab94d8118fb25c95ef2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2078032380}
-  speed: 0.2
-  distance: 0
+  playerTarget: {fileID: 2078032380}
+  fireplaceTarget: {fileID: 827108734}
+  speed: 2
+  playerDistance: 0
+  fireplaceDistance: 0
   maxHealth: 50
   health: 0
+  heatDamage: 10
+  heatDamageDelay: 3
   _bars: {fileID: 1471022243}
   changePatrolDirectionInterval: 3
   maxPatrolDistance: 15
   patrolSpeedMultiplier: 5
+  attackForce: 10
 --- !u!54 &653082286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4264,11 +4269,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2538d5d5e10604193274db315f32a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2078032380}
+  playerTarget: {fileID: 0}
+  fireplaceTarget: {fileID: 0}
   speed: 0.25
-  distance: 0
+  playerDistance: 0
+  fireplaceDistance: 0
   maxHealth: 80
   health: 0
+  heatDamage: 0
+  heatDamageDelay: 0
   _bars: {fileID: 1471022243}
 --- !u!114 &2097648210
 MonoBehaviour:

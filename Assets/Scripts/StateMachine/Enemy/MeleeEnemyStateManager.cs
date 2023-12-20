@@ -25,20 +25,20 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
 
         UpdateCurrentState();
 
-        if (_meleeEnemy.distance > 20)
+        if (_meleeEnemy.playerDistance > 20)
         {
             nextState = MeleeEnemyStates.MeleePatrolState;
-        } 
-        else if (_meleeEnemy.distance < 20 && _meleeEnemy.distance > 5)
+        }
+        else if (_meleeEnemy.playerDistance < 20 && _meleeEnemy.playerDistance > 2)
         {
             nextState = MeleeEnemyStates.MeleeChaseState;
         }
-        else if (_meleeEnemy.distance < 5)
+        else if (_meleeEnemy.playerDistance < 2)
         {
             nextState = MeleeEnemyStates.MeleeAttackState;
         }
 
-        if(!currentState.StateKey.Equals(nextState))
+        if (!currentState.StateKey.Equals(nextState))
         {
             ChangeState(nextState);
         }

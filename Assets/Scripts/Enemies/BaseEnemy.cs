@@ -4,19 +4,28 @@ using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
-    public Transform target;
+    public Transform playerTarget;
+    public Transform fireplaceTarget;
     public float speed;
-    public float distance;
+    public float playerDistance;
+    public float fireplaceDistance;
     public float maxHealth;
     public float health;
+    public float heatDamage;
+    public float heatDamageDelay;
 
     [SerializeField] protected Bars _bars;
 
     void FixedUpdate()
     {
-        if (target != null)
+        if (playerTarget != null)
         {
-            distance = Vector3.Distance(transform.position, target.position);
+            playerDistance = Vector3.Distance(transform.position, playerTarget.position);
+        }
+
+        if (fireplaceTarget != null)
+        {
+            fireplaceDistance = Vector3.Distance(transform.position, fireplaceTarget.position);
         }
     }
 

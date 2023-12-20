@@ -11,12 +11,15 @@ public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
     public override void Enter()
     {
         Debug.Log("Entered Patrol State");
-        //SetRandomDestination();
+
+        SetRandomDestination();
     }
     public override void Exit()
     {
-        Debug.Log("Exited Patrol State");
+        //Debug.Log("Exited Patrol State");
+
         randomPoint = Vector3.zero;
+        timer = 0f;
     }
     public override void Update()
     {
@@ -40,6 +43,6 @@ public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
     void MoveToRandomPoint()
     {
         MeleeEnemy.instance.transform.LookAt(randomPoint);
-        MeleeEnemy.instance.transform.Translate(Vector3.forward * MeleeEnemy.instance.speed * MeleeEnemy.instance.patrolSpeedMultiplier * Time.deltaTime);
+        MeleeEnemy.instance.transform.Translate(Vector3.forward * MeleeEnemy.instance.speed * Time.deltaTime);
     }
 }
