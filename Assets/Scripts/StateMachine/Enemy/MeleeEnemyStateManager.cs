@@ -12,9 +12,9 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
     }
     void Awake()
     {
-        States.Add(MeleeEnemyStates.MeleePatrolState, new MeleePatrolState(MeleeEnemyStates.MeleePatrolState));
-        States.Add(MeleeEnemyStates.MeleeChaseState, new MeleeChaseState(MeleeEnemyStates.MeleeChaseState));
-        States.Add(MeleeEnemyStates.MeleeAttackState, new MeleeAttackState(MeleeEnemyStates.MeleeAttackState));
+        States.Add(MeleeEnemyStates.MeleePatrolState, new MeleePatrolState(MeleeEnemyStates.MeleePatrolState, _meleeEnemy));
+        States.Add(MeleeEnemyStates.MeleeChaseState, new MeleeChaseState(MeleeEnemyStates.MeleeChaseState, _meleeEnemy));
+        States.Add(MeleeEnemyStates.MeleeAttackState, new MeleeAttackState(MeleeEnemyStates.MeleeAttackState, _meleeEnemy));
 
         currentState = States[MeleeEnemyStates.MeleePatrolState];
     }

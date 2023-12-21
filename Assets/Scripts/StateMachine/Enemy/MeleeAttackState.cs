@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class MeleeAttackState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
-    public MeleeAttackState(MeleeEnemyStateManager.MeleeEnemyStates key) : base(key) { }
+    private MeleeEnemy _meleeEnemy;
+
+    public MeleeAttackState(MeleeEnemyStateManager.MeleeEnemyStates key, MeleeEnemy meleeEnemy) : base(key)
+    {
+        _meleeEnemy = meleeEnemy;
+    }
 
     private float timer = 3;
 
@@ -22,7 +27,7 @@ public class MeleeAttackState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
         {
             //Debug.Log("Attacking");
 
-            PlayerMainCore.instance.playerHealth -= MeleeEnemy.instance.attackForce;
+            PlayerMainCore.instance.playerHealth -= _meleeEnemy.attackForce;
 
             timer = 0f;
         }

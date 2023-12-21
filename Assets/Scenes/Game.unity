@@ -469,17 +469,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7400091602668955903, guid: 9f97f0eeb2dadcf4896efb80dd9b53dc, type: 3}
   m_PrefabInstance: {fileID: 7362966736966038838}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &298008343 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 280488774442482833, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
-  m_PrefabInstance: {fileID: 6806375295331307976}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &327381087
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +969,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537795732}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b39acbc3269e847b359aab01e7d8db, type: 3}
   m_Name: 
@@ -2953,11 +2942,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a62d61833ead044b4521847a096f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSlider: {fileID: 260182799}
-  _fireplaceSlider: {fileID: 524794962}
-  _torchSlider: {fileID: 1016766146}
-  _meleeEnemySlider: {fileID: 298008343}
-  _rangeEnemySlider: {fileID: 632308067}
+  playerSlider: {fileID: 260182799}
+  fireplaceSlider: {fileID: 524794962}
+  torchSlider: {fileID: 1016766146}
 --- !u!114 &1471022244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3779,6 +3766,7 @@ MonoBehaviour:
   maxPatrolDistance: 0
   patrolSpeedMultiplier: 0
   attackForce: 0
+  rangeEnemyBar: {fileID: 0}
 --- !u!114 &2097648210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3806,7 +3794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 140174018639254251, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1002843537317411142, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3852,10 +3840,6 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 327381089}
-    - target: {fileID: 3444606516007288485, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
-      propertyPath: _bars
-      value: 
-      objectReference: {fileID: 1471022243}
     - target: {fileID: 3444606516007288485, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
       propertyPath: playerTarget
       value: 

@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class RangeEnemy : BaseEnemy
 {
+    [SerializeField] RangeEnemyBar rangeEnemyBar;
+
+
     private void Start()
     {
         health = maxHealth;
-        Bars.instance.SetMaxRangeEnemyHealth(maxHealth);
+        rangeEnemyBar.SetMaxRangeEnemyHealth(maxHealth);
     }
 
     private void Update()
     {
-        Bars.instance.SetRangeEnemyHealth(health);
+        rangeEnemyBar.SetRangeEnemyHealth(health);
     }
 
     public override void TakeDamage(float amount)

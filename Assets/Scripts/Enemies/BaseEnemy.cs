@@ -16,23 +16,21 @@ public abstract class BaseEnemy : MonoBehaviour
     public float patrolSpeedMultiplier;
     public float attackForce;
 
-    //[SerializeField] public Bars _bars;
+    private void Awake()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        GameObject fireplaceObject = GameObject.FindGameObjectWithTag("Fireplace");
 
-    //private void Start()
-    //{
-    //    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-    //    GameObject fireplaceObject = GameObject.FindGameObjectWithTag("Fireplace");
+        if (playerObject != null)
+        {
+            playerTarget = playerObject.transform;
+        }
 
-    //    if (playerObject != null)
-    //    {
-    //        playerTarget = playerObject.transform;
-    //    }
-
-    //    if (fireplaceObject != null)
-    //    {
-    //        fireplaceTarget = fireplaceObject.transform;
-    //    }
-    //}
+        if (fireplaceObject != null)
+        {
+            fireplaceTarget = fireplaceObject.transform;
+        }
+    }
 
     void FixedUpdate()
     {

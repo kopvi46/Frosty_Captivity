@@ -3,7 +3,12 @@ using UnityEngine.UIElements;
 
 public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
-    public MeleePatrolState(MeleeEnemyStateManager.MeleeEnemyStates key) : base(key) { }
+    private MeleeEnemy _meleeEnemy;
+
+    public MeleePatrolState(MeleeEnemyStateManager.MeleeEnemyStates key, MeleeEnemy meleeEnemy) : base(key)
+    {
+        _meleeEnemy = meleeEnemy;
+    }
 
     private Vector3 randomPoint;
     private float timer;
@@ -25,7 +30,7 @@ public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
     {
         timer += Time.deltaTime;
 
-        if (timer >= MeleeEnemy.instance.changePatrolDirectionInterval)
+        if (timer >= _meleeEnemy.changePatrolDirectionInterval)
         {
             SetRandomDestination();
             timer = 0f;
@@ -36,13 +41,13 @@ public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
 
     void SetRandomDestination()
     {
-        randomPoint = MeleeEnemy.instance.transform.position + Random.insideUnitSphere * MeleeEnemy.instance.maxPatrolDistance;
-        randomPoint.y = MeleeEnemy.instance.transform.position.y;
+        randomPoint = _meleeEnemy.transform.position + Random.insideUnitSphere * _meleeEnemy.maxPatrolDistance;
+        randomPoint.y = _meleeEnemy.transform.position.y;
     }
 
     void MoveToRandomPoint()
     {
-        MeleeEnemy.instance.transform.LookAt(randomPoint);
-        MeleeEnemy.instance.transform.Translate(Vector3.forward * MeleeEnemy.instance.speed * Time.deltaTime);
+        _meleeEnemy.transform.LookAt(randomPoint);
+        _meleeEnemy.transform.Translate(Vector3.forward * _meleeEnemy.speed * Time.deltaTime);
     }
 }

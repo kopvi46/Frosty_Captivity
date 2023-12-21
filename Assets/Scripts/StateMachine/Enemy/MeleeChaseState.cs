@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class MeleeChaseState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
-    public MeleeChaseState(MeleeEnemyStateManager.MeleeEnemyStates key) : base(key) { }
+    private MeleeEnemy _meleeEnemy;
+
+    public MeleeChaseState(MeleeEnemyStateManager.MeleeEnemyStates key, MeleeEnemy meleeEnemy) : base(key)
+    {
+        _meleeEnemy = meleeEnemy;
+    }
 
     public override void Enter()
     {
@@ -14,7 +19,7 @@ public class MeleeChaseState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates
     }
     public override void Update()
     {
-        MeleeEnemy.instance.transform.LookAt(MeleeEnemy.instance.playerTarget.position);
-        MeleeEnemy.instance.transform.Translate(Vector3.forward * MeleeEnemy.instance.speed * Time.deltaTime);
+        _meleeEnemy.transform.LookAt(_meleeEnemy.playerTarget.position);
+        _meleeEnemy.transform.Translate(Vector3.forward * _meleeEnemy.speed * Time.deltaTime);
     }
 }
