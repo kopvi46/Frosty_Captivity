@@ -5,30 +5,51 @@ public class TreeMainCore : Interactable
 {
     public float hitToGather;
 
-    public GameObject itemPrefab;
+    public GameObject firewoodPrefab;
+    private GameObject createdFirewood;
+
+    public void SetFirewood(GameObject prefab)
+    {
+        firewoodPrefab = prefab;
+    }
 
     public override void Interact()
     {
         base.Interact();
 
-        if ( hitToGather <= 1 )
+        //if ( hitToGather <= 1 )
+        //{
+        //    GameObject treeObject = GameObject.FindGameObjectWithTag("Tree");
+        //    if (treeObject != null)
+        //    {
+        //        Transform playerTransform = treeObject.transform;
+
+        //        Vector3 spawnOffset = Vector3.up * -1.5f;
+        //        Vector3 spawnPosition = playerTransform.position + spawnOffset;
+
+        //        CreateItem(firewoodPrefab, spawnPosition);
+        //        Destroy(gameObject);
+        //    } else
+        //    {
+        //        Debug.LogError("Tree GameObject not found or tagged incorrectly!");
+        //    }
+        //} else
+        //{
+        //    Obtain();
+        //}
+
+        if (hitToGather <= 1)
         {
-            GameObject treeObject = GameObject.FindGameObjectWithTag("Tree");
-            if (treeObject != null)
+            if (createdFirewood != null)
             {
-                Transform playerTransform = treeObject.transform;
-
-                Vector3 spawnOffset = Vector3.up * -1.5f;
-                Vector3 spawnPosition = playerTransform.position + spawnOffset;
-
-                CreateItem(itemPrefab, spawnPosition);
-                Destroy(gameObject);
+                Destroy(createdFirewood);
             }
-            else
-            {
-                Debug.LogError("Tree GameObject not found or tagged incorrectly!");
-            }
-        } else
+
+            Vector3 spawnOffset = Vector3.up * -1.5f;
+            createdFirewood = Instantiate(firewoodPrefab, transform.position + spawnOffset, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else
         {
             Obtain();
         }
@@ -41,9 +62,9 @@ public class TreeMainCore : Interactable
 
     public void CreateItem(GameObject prefab, Vector3 spawnPosition)
     {
-        if (itemPrefab != null)
+        if (firewoodPrefab != null)
         {
-            GameObject newIt = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+            GameObject newIt = Instantiate(firewoodPrefab, spawnPosition, Quaternion.identity);
         }
     }
 }
