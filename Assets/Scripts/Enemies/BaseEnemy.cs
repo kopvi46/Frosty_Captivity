@@ -1,29 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
-    public Transform target;
+    public Transform playerTarget;
+    public Transform fireplaceTarget;
     public float speed;
-    public float distance;
+    public float playerDistance;
+    public float fireplaceDistance;
     public float maxHealth;
     public float health;
+    public float heatDamage;
+    public float heatDamageDelay;
+    public float changePatrolDirectionInterval;
+    public float maxPatrolDistance;
+    public float patrolSpeedMultiplier;
+    public float attackForce;
 
-    [SerializeField] protected Bars _bars;
+    private void Awake()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        GameObject fireplaceObject = GameObject.FindGameObjectWithTag("Fireplace");
+
+        if (playerObject != null)
+        {
+            playerTarget = playerObject.transform;
+        }
+
+        if (fireplaceObject != null)
+        {
+            fireplaceTarget = fireplaceObject.transform;
+        }
+    }
 
     void FixedUpdate()
     {
-        if (target != null)
+        if (playerTarget != null)
         {
-            distance = Vector3.Distance(transform.position, target.position);
+            playerDistance = Vector3.Distance(transform.position, playerTarget.position);
+        }
+
+        if (fireplaceTarget != null)
+        {
+            fireplaceDistance = Vector3.Distance(transform.position, fireplaceTarget.position);
+        }
+
+        if (fireplaceDistance <= 10)
+        {
+            heatDamageDelay += Time.deltaTime;
+
+            if (heatDamageDelay >= 3)
+            {
+                health -= heatDamage;
+
+                heatDamageDelay = 0f;
+            }
+        }
+
+        if (health <= 0)
+        {
+            Die();
         }
     }
 
     public abstract void TakeDamage(float damage);
 
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
-    }
+    public abstract void Die();
 }
