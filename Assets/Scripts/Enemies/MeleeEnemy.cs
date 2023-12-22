@@ -32,4 +32,10 @@ public class MeleeEnemy : BaseEnemy
     {
         health -= amount;
     }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
+        EnemiesSpawner.instance.SpawnEnemy(EnemiesSpawner.instance.meleeEnemyPrefab);
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeEnemyStates>
 {
     public RangeEnemy _rangeEnemy;
-
+    public EnemyShooter enemyShooter;
     public enum RangeEnemyStates
     {
         RangePatrolState,
@@ -12,9 +12,9 @@ public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeE
     }
     void Awake()
     {
-        States.Add(RangeEnemyStates.RangePatrolState, new RangePatrolState(RangeEnemyStates.RangePatrolState));
-        States.Add(RangeEnemyStates.RangeChaseState, new RangeChaseState(RangeEnemyStates.RangeChaseState));
-        States.Add(RangeEnemyStates.RangeAttackState, new RangeAttackState(RangeEnemyStates.RangeAttackState));
+        States.Add(RangeEnemyStates.RangePatrolState, new RangePatrolState(RangeEnemyStates.RangePatrolState, _rangeEnemy));
+        States.Add(RangeEnemyStates.RangeChaseState, new RangeChaseState(RangeEnemyStates.RangeChaseState, _rangeEnemy));
+        States.Add(RangeEnemyStates.RangeAttackState, new RangeAttackState(RangeEnemyStates.RangeAttackState, _rangeEnemy, enemyShooter));
 
         currentState = States[RangeEnemyStates.RangePatrolState];
     }
@@ -23,20 +23,15 @@ public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeE
     {
         RangeEnemyStates nextState = currentState.StateKey;
 
-        if (_rangeEnemy.playerDistance > 25)
+        UpdateCurrentState();
+
+        if (_rangeEnemy.playerDistance > 20)
         {
             nextState = RangeEnemyStates.RangePatrolState;
         }
-        else if (_rangeEnemy.playerDistance < 25 && _rangeEnemy.playerDistance > 10)
+        else if (_rangeEnemy.playerDistance < 20 && _rangeEnemy.playerDistance > 10)
         {
             nextState = RangeEnemyStates.RangeChaseState;
-
-            if (_rangeEnemy != null && _rangeEnemy.playerTarget != null)
-            {
-                Vector3 direction = _rangeEnemy.playerTarget.position - _rangeEnemy.transform.position;
-                direction.Normalize();
-                _rangeEnemy.transform.Translate(direction * _rangeEnemy.speed * Time.fixedDeltaTime);
-            }
         }
         else if (_rangeEnemy.playerDistance < 10)
         {
@@ -46,6 +41,14 @@ public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeE
         if (!currentState.StateKey.Equals(nextState))
         {
             ChangeState(nextState);
+        }
+    }
+
+    void UpdateCurrentState()
+    {
+        if (currentState != null)
+        {
+            currentState.Update();
         }
     }
 }

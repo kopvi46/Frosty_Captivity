@@ -7,20 +7,40 @@ public class SnowBall : MonoBehaviour
     public float damage;
 
     private SnowBallShooter shooter;
+    private EnemyShooter enemyShooter;
+
     public void SetShooter(SnowBallShooter shooter)
     {
         this.shooter = shooter;
     }
 
+    public void SetEnemyShooter(EnemyShooter enemyShooter)
+    {
+        this.enemyShooter = enemyShooter;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         BaseEnemy baseEnemy = collision.gameObject.GetComponent<BaseEnemy>();
+        PlayerMainCore playerMainCore = collision.gameObject.GetComponent<PlayerMainCore>();
 
         if (baseEnemy != null)
         {
-            baseEnemy.TakeDamage(damage);
-            shooter.ReturnToPool(this);
-            //Debug.Log(collision.gameObject.name);
+            if (shooter != null)
+            {
+                baseEnemy.TakeDamage(damage);
+                shooter.ReturnToPool(this);
+                //Debug.Log(collision.gameObject.name);
+            }
+        }
+
+        if (playerMainCore != null)
+        {
+            if (enemyShooter != null)
+            {
+                playerMainCore.playerHealth -= damage;
+                enemyShooter.ReturnToPool(this);
+            }
         }
     }
 
@@ -34,6 +54,11 @@ public class SnowBall : MonoBehaviour
         if (shooter != null)
         {
             shooter.ReturnToPool(this);
+        }
+
+        if (enemyShooter != null)
+        {
+            enemyShooter.ReturnToPool(this);
         }
     }
 }

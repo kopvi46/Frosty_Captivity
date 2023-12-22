@@ -20,4 +20,10 @@ public class RangeEnemy : BaseEnemy
     {
         health -= amount;
     }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
+        EnemiesSpawner.instance.SpawnEnemy(EnemiesSpawner.instance.rangeEnemyPrefab);
+    }
 }

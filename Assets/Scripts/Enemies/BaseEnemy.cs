@@ -64,10 +64,5 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public abstract void TakeDamage(float damage);
 
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
-
-        EnemiesSpawner.instance.SpawnEnemy();
-    }
+    public abstract void Die();
 }

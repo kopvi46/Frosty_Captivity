@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
@@ -15,7 +14,7 @@ public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyState
 
     public override void Enter()
     {
-        Debug.Log("Entered Patrol State");
+        //Debug.Log("Entered Patrol State");
 
         SetRandomDestination();
     }
