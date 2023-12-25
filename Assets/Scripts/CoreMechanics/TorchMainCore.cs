@@ -8,7 +8,7 @@ public class TorchMainCore : MonoBehaviour
     public float torchBurn;
     public float torchBurnInterval;
 
-    private Coroutine torchBurnCoroutine;
+    public Coroutine torchBurnCoroutine;
     private GameObject _torchObject;
     [SerializeField] private Bars _bars;
 

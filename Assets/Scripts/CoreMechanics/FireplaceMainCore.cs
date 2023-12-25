@@ -25,7 +25,7 @@ public class FireplaceMainCore : MonoBehaviour
 
     [SerializeField] private Bars _bars;
 
-    private Coroutine fireplaceBurnCoroutine;
+    public Coroutine fireplaceBurnCoroutine;
 
     private void Start()
     {

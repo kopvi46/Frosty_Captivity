@@ -24,8 +24,8 @@ public class PlayerMainCore : MonoBehaviour
     [SerializeField] private TorchMainCore _torchMainCore;
     [SerializeField] private Bars _bars;
 
-    private Coroutine freezeDamageCoroutine;
-    private Coroutine warmHealCoroutine;
+    public Coroutine freezeDamageCoroutine;
+    public Coroutine warmHealCoroutine;
 
     private void Start()
     {
