@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Initializer _initializer;
     [SerializeField] private float _speed;
     [SerializeField] private float _mouseSens;
-
     private Rigidbody _rigidbody;
 
     private void Start()

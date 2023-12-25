@@ -4,6 +4,7 @@ public class RangeAttackState : BaseState<RangeEnemyStateManager.RangeEnemyState
 {
     private RangeEnemy _rangeEnemy;
     private EnemyShooter _enemyShooter;
+    private float timer = 0;
 
     public RangeAttackState(RangeEnemyStateManager.RangeEnemyStates key, RangeEnemy rangeEnemy, EnemyShooter enemyShooter) : base(key)
     {
@@ -11,16 +12,10 @@ public class RangeAttackState : BaseState<RangeEnemyStateManager.RangeEnemyState
         _enemyShooter = enemyShooter;
     }
 
-    private float timer = 2;
+    public override void Enter() { }
 
-    public override void Enter()
-    {
-        //Debug.Log("Entered melee Attack State");
-    }
-    public override void Exit()
-    {
-        //Debug.Log("Exited melee Attack State");
-    }
+    public override void Exit() { }
+
     public override void Update()
     {
         _rangeEnemy.transform.LookAt(_rangeEnemy.playerTarget.position);
@@ -29,9 +24,6 @@ public class RangeAttackState : BaseState<RangeEnemyStateManager.RangeEnemyState
 
         if (timer >= 1)
         {
-            //Debug.Log("Attacking");
-
-            //PlayerMainCore.instance.playerHealth -= _rangeEnemy.attackForce;
             _enemyShooter.Shoot();
             timer = 0f;
         }

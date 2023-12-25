@@ -1,9 +1,8 @@
-using UnityEngine;
-
 public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeEnemyStates>
 {
     public RangeEnemy _rangeEnemy;
     public EnemyShooter enemyShooter;
+
     public enum RangeEnemyStates
     {
         RangePatrolState,
@@ -28,12 +27,10 @@ public class RangeEnemyStateManager : StateManager<RangeEnemyStateManager.RangeE
         if (_rangeEnemy.playerDistance > 20)
         {
             nextState = RangeEnemyStates.RangePatrolState;
-        }
-        else if (_rangeEnemy.playerDistance < 20 && _rangeEnemy.playerDistance > 10)
+        } else if (_rangeEnemy.playerDistance < 20 && _rangeEnemy.playerDistance > 10)
         {
             nextState = RangeEnemyStates.RangeChaseState;
-        }
-        else if (_rangeEnemy.playerDistance < 10)
+        } else if (_rangeEnemy.playerDistance < 10)
         {
             nextState = RangeEnemyStates.RangeAttackState;
         }

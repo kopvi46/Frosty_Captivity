@@ -1,11 +1,10 @@
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class TreeMainCore : Interactable
 {
     public float hitToGather;
-
     public GameObject firewoodPrefab;
+
     private GameObject createdFirewood;
 
     public void SetFirewood(GameObject prefab)
@@ -17,27 +16,6 @@ public class TreeMainCore : Interactable
     {
         base.Interact();
 
-        //if ( hitToGather <= 1 )
-        //{
-        //    GameObject treeObject = GameObject.FindGameObjectWithTag("Tree");
-        //    if (treeObject != null)
-        //    {
-        //        Transform playerTransform = treeObject.transform;
-
-        //        Vector3 spawnOffset = Vector3.up * -1.5f;
-        //        Vector3 spawnPosition = playerTransform.position + spawnOffset;
-
-        //        CreateItem(firewoodPrefab, spawnPosition);
-        //        Destroy(gameObject);
-        //    } else
-        //    {
-        //        Debug.LogError("Tree GameObject not found or tagged incorrectly!");
-        //    }
-        //} else
-        //{
-        //    Obtain();
-        //}
-
         if (hitToGather <= 1)
         {
             if (createdFirewood != null)
@@ -48,8 +26,7 @@ public class TreeMainCore : Interactable
             Vector3 spawnOffset = Vector3.up * -1.5f;
             createdFirewood = Instantiate(firewoodPrefab, transform.position + spawnOffset, Quaternion.identity);
             Destroy(gameObject);
-        }
-        else
+        } else
         {
             Obtain();
         }

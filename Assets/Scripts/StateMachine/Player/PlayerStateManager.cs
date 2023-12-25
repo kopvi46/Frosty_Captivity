@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
 {
     public Initializer _initializer;
@@ -27,8 +25,7 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
         if (isMoving)
         {
             nextState = PlayerStates.WalkState;
-        }
-        else
+        } else
         {
             nextState = PlayerStates.IdleState;
         }

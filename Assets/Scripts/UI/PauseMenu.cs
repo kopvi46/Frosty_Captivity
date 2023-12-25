@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +6,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
     public GameObject looseMenu;
+
     [SerializeField] private Initializer _initializer;
     [SerializeField] private FireplaceMainCore _fireplaceMainCore;
     [SerializeField] private TorchMainCore _torchMainCore;

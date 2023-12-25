@@ -3,25 +3,20 @@ using UnityEngine;
 public class MeleePatrolState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
     private MeleeEnemy _meleeEnemy;
+    private Vector3 randomPoint;
+    private float timer;
 
     public MeleePatrolState(MeleeEnemyStateManager.MeleeEnemyStates key, MeleeEnemy meleeEnemy) : base(key)
     {
         _meleeEnemy = meleeEnemy;
     }
 
-    private Vector3 randomPoint;
-    private float timer;
-
     public override void Enter()
     {
-        //Debug.Log("Entered Patrol State");
-
         SetRandomDestination();
     }
     public override void Exit()
     {
-        //Debug.Log("Exited Patrol State");
-
         randomPoint = Vector3.zero;
         timer = 0f;
     }

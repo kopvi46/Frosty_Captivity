@@ -25,7 +25,6 @@ public class Raycast : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                //Debug.Log("We hit " + hit.collider.name);
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
