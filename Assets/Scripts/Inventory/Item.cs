@@ -14,7 +14,7 @@ public class Item : ScriptableObject
         Debug.Log("Using " + name);
         if (name  == "Firewood" && FireplaceMainCore.instance.distance < 5)
         {
-            FireplaceMainCore.instance.fireplaceHealth += 100;
+            FireplaceMainCore.instance.fireplaceHealth += 50;
 
             if (FireplaceMainCore.instance.fireplaceHealth > 1000)
             {

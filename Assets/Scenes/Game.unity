@@ -905,7 +905,7 @@ MonoBehaviour:
   fireplaceTarget: {fileID: 827108734}
   meleeEnemyPrefab: {fileID: 140174018639254251, guid: d3fb0d97a2f8c6d419c6133630313cb8, type: 3}
   rangeEnemyPrefab: {fileID: 622768718140942389, guid: dee70d591fa59ab408e28b695256f285, type: 3}
-  initialEnemyCount: 5
+  initialEnemyCount: 10
   spawnRadius: 80
   spawnDistance: 40
 --- !u!114 &537795736
@@ -940,7 +940,7 @@ MonoBehaviour:
   playerTarget: {fileID: 2078032380}
   fireplaceTarget: {fileID: 827108734}
   treePrefab: {fileID: 763870915657051185, guid: c1ecba1349699a94fa5957b94cf2aa70, type: 3}
-  initialTreeCount: 30
+  initialTreeCount: 15
   spawnRadius: 90
   spawnDistance: 40
 --- !u!1001 &592960399
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   torchMaxHealth: 10
   torchHealth: 0
   torchBurn: 1
-  torchBurnInterval: 1
+  torchBurnInterval: 5
   _bars: {fileID: 1471022243}
 --- !u!1 &705507993
 GameObject:
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   fireplaceMaxHealth: 1000
   fireplaceHealth: 0
   fireplaceBurn: 10
-  fireplaceBurnInterval: 5
+  fireplaceBurnInterval: 3
   distance: 0
   _bars: {fileID: 1471022243}
 --- !u!114 &827108736
