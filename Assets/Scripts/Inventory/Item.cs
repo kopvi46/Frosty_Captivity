@@ -1,7 +1,7 @@
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+
 public class Item : ScriptableObject
 {
     new public string name = "New Item";
@@ -14,7 +14,7 @@ public class Item : ScriptableObject
         Debug.Log("Using " + name);
         if (name  == "Firewood" && FireplaceMainCore.instance.distance < 5)
         {
-            FireplaceMainCore.instance.fireplaceHealth += 100;
+            FireplaceMainCore.instance.fireplaceHealth += 50;
 
             if (FireplaceMainCore.instance.fireplaceHealth > 1000)
             {

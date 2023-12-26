@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,8 +37,7 @@ public class InventorySlot : MonoBehaviour
             Vector3 spawnPosition = playerTransform.position + spawnOffset;
 
             DropItem(item.itemPrefab, spawnPosition);
-        }
-        else
+        } else
         {
             Debug.LogError("Player GameObject not found or tagged incorrectly!");
         }

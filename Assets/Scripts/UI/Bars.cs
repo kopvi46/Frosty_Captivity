@@ -3,24 +3,9 @@ using UnityEngine.UI;
 
 public class Bars : MonoBehaviour
 {
-    #region Singleton 
-    //public static Bars instance;
-
-    //private void Awake()
-    //{
-    //    if (instance != null)
-    //    {
-    //        Debug.Log("More than one instance of FireplaceMainCore found!");
-    //    }
-    //    instance = this;
-    //}
-    #endregion
-
     public Slider playerSlider;
     public Slider fireplaceSlider;
     public Slider torchSlider;
-    //public Slider meleeEnemySlider;
-    //public Slider rangeEnemySlider;
 
     public void SetMaxPlayerHealth(float MaxHealth)
     {
@@ -54,26 +39,4 @@ public class Bars : MonoBehaviour
     {
         torchSlider.value = health;
     }
-
-    //public void SetMaxMeleeEnemyHealth(float MaxHealth)
-    //{
-    //    meleeEnemySlider.maxValue = MaxHealth;
-    //    meleeEnemySlider.value = MaxHealth;
-    //}
-
-    //public void SetMeleeEnemyHealth(float health)
-    //{
-    //    meleeEnemySlider.value = health;
-    //}
-
-    //public void SetMaxRangeEnemyHealth(float MaxHealth)
-    //{
-    //    rangeEnemySlider.maxValue = MaxHealth;
-    //    rangeEnemySlider.value = MaxHealth;
-    //}
-
-    //public void SetRangeEnemyHealth(float health)
-    //{
-    //    rangeEnemySlider.value = health;
-    //}
 }

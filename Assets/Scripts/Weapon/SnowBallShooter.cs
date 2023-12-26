@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class SnowBallShooter : MonoBehaviour
 {
-    private const int SNOWBALL_PRELOAD_COUNT = 10;
     public Transform snowBallSpawnPoint;
     public float damage;
 
+    private const int SNOWBALL_PRELOAD_COUNT = 10;
+    private PoolBase<SnowBall> _snowBallPool;
     [SerializeField] private Initializer _initializer;
     [SerializeField] private SnowBall _snowball;
     [SerializeField] private SnowBall _snowballPrefab;
-
-    private PoolBase<SnowBall> _snowBallPool;
 
     private void Awake()
     {

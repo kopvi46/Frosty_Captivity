@@ -9,14 +9,10 @@ public class MeleeChaseState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates
         _meleeEnemy = meleeEnemy;
     }
 
-    public override void Enter()
-    {
-        //Debug.Log("Entered Chase State");
-    }
-    public override void Exit()
-    {
-        //Debug.Log("Exited Chase State");
-    }
+    public override void Enter() { }
+
+    public override void Exit() { }
+
     public override void Update()
     {
         _meleeEnemy.transform.LookAt(_meleeEnemy.playerTarget.position);

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeEnemyStates>
 {
     public MeleeEnemy _meleeEnemy;
@@ -28,12 +26,10 @@ public class MeleeEnemyStateManager : StateManager<MeleeEnemyStateManager.MeleeE
         if (_meleeEnemy.playerDistance > 20)
         {
             nextState = MeleeEnemyStates.MeleePatrolState;
-        }
-        else if (_meleeEnemy.playerDistance < 20 && _meleeEnemy.playerDistance > 2)
+        } else if (_meleeEnemy.playerDistance < 20 && _meleeEnemy.playerDistance > 2)
         {
             nextState = MeleeEnemyStates.MeleeChaseState;
-        }
-        else if (_meleeEnemy.playerDistance < 2)
+        } else if (_meleeEnemy.playerDistance < 2)
         {
             nextState = MeleeEnemyStates.MeleeAttackState;
         }

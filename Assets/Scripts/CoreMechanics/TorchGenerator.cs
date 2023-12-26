@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TorchGenerator : Interactable
@@ -16,7 +14,7 @@ public class TorchGenerator : Interactable
         {
             torchObject.SetActive(true);
             torchMainCore.torchHealth = 10;
-            fireplaceMainCore.fireplaceHealth -= 50;
+            fireplaceMainCore.fireplaceHealth -= 100;
         }
     }
 }

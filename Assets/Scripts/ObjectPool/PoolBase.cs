@@ -7,7 +7,6 @@ public class PoolBase<T>
     private readonly Func<T> _preloadFunc;
     private readonly Action<T> _getAction;
     private readonly Action<T> _returnAction;
-
     private Queue<T> _pool = new Queue<T> ();
     private List<T> _active = new List<T> ();
 

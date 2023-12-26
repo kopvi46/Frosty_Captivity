@@ -7,21 +7,17 @@ public class Interactable : MonoBehaviour
     public Transform interactionTransform;
 
     bool isFocus = false;
-    Transform player;
-
     bool hasInteracted = false;
 
     Camera cam;
+    Transform player;
 
     private void Start()
     {
         cam = Camera.main;
     }
 
-    public virtual void Interact()
-    {
-        //Debug.Log("Interacting with " + transform.name);
-    }
+    public virtual void Interact() { }
 
     void FixedUpdate()
     {

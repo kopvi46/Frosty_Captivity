@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class StateManager<EStates> : MonoBehaviour
 {
-    //private IBaseState currentState;
     protected Dictionary<EStates, BaseState<EStates>> States = new Dictionary<EStates, BaseState<EStates>>();
     protected BaseState<EStates> currentState;
 

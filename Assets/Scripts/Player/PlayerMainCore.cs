@@ -20,12 +20,12 @@ public class PlayerMainCore : MonoBehaviour
     public float playerMaxHealth;
     public float freezeDamage;
     public float freezeDamageInterval;
+    public Coroutine freezeDamageCoroutine;
+    public Coroutine warmHealCoroutine;
+
     [SerializeField] private FireplaceMainCore _fireplaceMainCore;
     [SerializeField] private TorchMainCore _torchMainCore;
     [SerializeField] private Bars _bars;
-
-    private Coroutine freezeDamageCoroutine;
-    private Coroutine warmHealCoroutine;
 
     private void Start()
     {
@@ -42,8 +42,7 @@ public class PlayerMainCore : MonoBehaviour
                 {
                     freezeDamageCoroutine = StartCoroutine(ApplyFreezeDamage());
                 }
-            }
-            else
+            } else
             {
                 if (freezeDamageCoroutine != null)
                 {
@@ -73,7 +72,6 @@ public class PlayerMainCore : MonoBehaviour
     {
         while (playerHealth > 0)
         {
-            //Debug.Log("Player health:" + playerHealth);
             playerHealth -= freezeDamage;
             _bars.SetPlayerHealth(playerHealth);
             yield return new WaitForSeconds(freezeDamageInterval);

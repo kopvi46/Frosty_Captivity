@@ -9,14 +9,10 @@ public class RangeChaseState : BaseState<RangeEnemyStateManager.RangeEnemyStates
         _rangeEnemy = rangeEnemy;
     }
 
-    public override void Enter()
-    {
-        //Debug.Log("Entered Chase State");
-    }
-    public override void Exit()
-    {
-        //Debug.Log("Exited Chase State");
-    }
+    public override void Enter() { }
+
+    public override void Exit() { }
+
     public override void Update()
     {
         _rangeEnemy.transform.LookAt(_rangeEnemy.playerTarget.position);

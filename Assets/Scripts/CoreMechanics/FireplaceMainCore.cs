@@ -22,10 +22,9 @@ public class FireplaceMainCore : MonoBehaviour
     public float fireplaceBurn;
     public float fireplaceBurnInterval;
     public float distance;
+    public Coroutine fireplaceBurnCoroutine;
 
     [SerializeField] private Bars _bars;
-
-    private Coroutine fireplaceBurnCoroutine;
 
     private void Start()
     {
@@ -45,8 +44,7 @@ public class FireplaceMainCore : MonoBehaviour
             {
                 fireplaceBurnCoroutine = StartCoroutine(ApplyFireplaceBurn());
             }
-        }
-        else
+        } else
         {
             if (fireplaceBurnCoroutine != null)
             {
@@ -60,7 +58,6 @@ public class FireplaceMainCore : MonoBehaviour
     {
         while (fireplaceHealth > 0)
         {
-            //Debug.Log("Fireplace health:" + fireplaceHealth);
             fireplaceHealth -= fireplaceBurn;
             _bars.SetFireplaceHealth(fireplaceHealth);
             yield return new WaitForSeconds(fireplaceBurnInterval);

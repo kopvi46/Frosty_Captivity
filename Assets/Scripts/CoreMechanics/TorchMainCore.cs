@@ -7,8 +7,8 @@ public class TorchMainCore : MonoBehaviour
     public float torchHealth;
     public float torchBurn;
     public float torchBurnInterval;
+    public Coroutine torchBurnCoroutine;
 
-    private Coroutine torchBurnCoroutine;
     private GameObject _torchObject;
     [SerializeField] private Bars _bars;
 
@@ -19,7 +19,6 @@ public class TorchMainCore : MonoBehaviour
 
     private void Start()
     {
-        //torchHealth = torchMaxHealth;
         _bars.SetMaxTorchHealth(torchMaxHealth);
     }
 
@@ -31,8 +30,7 @@ public class TorchMainCore : MonoBehaviour
             {
                 torchBurnCoroutine = StartCoroutine(ApplyTorchBurn());
             }
-        }
-        else
+        } else
         {
             if (_torchObject != null)
             {
@@ -51,7 +49,6 @@ public class TorchMainCore : MonoBehaviour
     {
         while (torchHealth > 0)
         {
-            //Debug.Log("Torch health:" + torchHealth);
             torchHealth -= torchBurn;
             _bars.SetTorchHealth(torchHealth);
             yield return new WaitForSeconds(torchBurnInterval);
