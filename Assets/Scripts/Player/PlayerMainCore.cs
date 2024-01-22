@@ -34,7 +34,8 @@ public class PlayerMainCore : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if ( _fireplaceMainCore != null)
+        Debug.Log(playerHealth);
+        if (_fireplaceMainCore != null)
         {
             if (_fireplaceMainCore.distance > 20 && _torchMainCore.torchHealth <= 0)
             {
@@ -42,7 +43,8 @@ public class PlayerMainCore : MonoBehaviour
                 {
                     freezeDamageCoroutine = StartCoroutine(ApplyFreezeDamage());
                 }
-            } else
+            }
+            else
             {
                 if (freezeDamageCoroutine != null)
                 {
@@ -57,7 +59,8 @@ public class PlayerMainCore : MonoBehaviour
                 {
                     warmHealCoroutine = StartCoroutine(ApplyWarmHeal());
                 }
-            } else
+            }
+            else
             {
                 if (warmHealCoroutine != null)
                 {
@@ -77,6 +80,7 @@ public class PlayerMainCore : MonoBehaviour
             yield return new WaitForSeconds(freezeDamageInterval);
         }
     }
+
     private IEnumerator ApplyWarmHeal()
     {
         while (playerHealth < 100)

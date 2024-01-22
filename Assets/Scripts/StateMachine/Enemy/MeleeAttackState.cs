@@ -3,7 +3,7 @@ using UnityEngine;
 public class MeleeAttackState : BaseState<MeleeEnemyStateManager.MeleeEnemyStates>
 {
     private MeleeEnemy _meleeEnemy;
-    private float timer = 2;
+    private float timer = 1.9f;
 
     public MeleeAttackState(MeleeEnemyStateManager.MeleeEnemyStates key, MeleeEnemy meleeEnemy) : base(key)
     {
