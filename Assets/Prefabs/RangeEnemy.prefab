@@ -291,7 +291,7 @@ MonoBehaviour:
   changePatrolDirectionInterval: 3
   maxPatrolDistance: 15
   patrolSpeedMultiplier: 5
-  attackForce: 0
+  attackForce: 10
   rangeEnemyBar: {fileID: 6598281786984043222}
 --- !u!114 &1324504389961797847
 MonoBehaviour:
