@@ -54,6 +54,8 @@ public class PauseMenu : MonoBehaviour
     {
         looseMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
 
         if (_fireplaceMainCore.fireplaceBurnCoroutine != null)
         {

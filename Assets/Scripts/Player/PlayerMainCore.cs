@@ -34,7 +34,6 @@ public class PlayerMainCore : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.Log(playerHealth);
         if (_fireplaceMainCore != null)
         {
             if (_fireplaceMainCore.distance > 20 && _torchMainCore.torchHealth <= 0)
